@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889326595310",
+    "project_id": "jtm-dairyfarmapp",
+    "storage_bucket": "jtm-dairyfarmapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889326595310:android:26a88bca192e13791d97ff",
+        "android_client_info": {
+          "package_name": "com.example.dairy_farm_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJHpZvktt_OzlH-vw1R07xM7hkE596NVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
