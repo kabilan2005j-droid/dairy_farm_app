@@ -6,6 +6,8 @@ import '../animals/animal_list_screen.dart';
 import '../milk/bill_scanner_screen.dart';
 import '../milk/milk_list_screen.dart';
 import '../sales/sales_list_screen.dart';
+import '../feed/feed_list_screen.dart';
+import '../health/health_list_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -145,14 +147,13 @@ class HomeScreen extends ConsumerWidget {
                   title: 'Feed\nInventory',
                   color: Colors.green,
                   onTap: () {
-                    // Coming soon
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Feed Inventory — Coming Soon!'),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-                  },
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const FeedListScreen(),
+    ),
+  );
+},
                 ),
                 _buildMenuCard(
                   context,
@@ -160,14 +161,13 @@ class HomeScreen extends ConsumerWidget {
                   title: 'Health\nRecords',
                   color: Colors.red,
                   onTap: () {
-                    // Coming soon
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Health Records — Coming Soon!'),
-                        backgroundColor: Colors.red,
-                      ),
-                    );
-                  },
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const HealthListScreen(),
+    ),
+  );
+},
                 ),
                 _buildMenuCard(
                   context,
