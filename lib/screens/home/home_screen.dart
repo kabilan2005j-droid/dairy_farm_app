@@ -5,6 +5,7 @@ import '../animals/animal_list_screen.dart';
 // ignore: unused_import
 import '../milk/bill_scanner_screen.dart';
 import '../milk/milk_list_screen.dart';
+import '../sales/sales_list_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -130,14 +131,13 @@ class HomeScreen extends ConsumerWidget {
                   title: 'Sales &\nIncome',
                   color: Colors.orange,
                   onTap: () {
-                    // Coming soon
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Sales & Income — Coming Soon!'),
-                        backgroundColor: Colors.orange,
-                      ),
-                    );
-                  },
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const SalesListScreen(),
+    ),
+  );
+},
                 ),
                 _buildMenuCard(
                   context,
