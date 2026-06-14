@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/auth_provider.dart';
 import '../animals/animal_list_screen.dart';
+// ignore: unused_import
 import '../milk/bill_scanner_screen.dart';
+import '../milk/milk_list_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -103,7 +105,7 @@ class HomeScreen extends ConsumerWidget {
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => const BillScannerScreen(),
+      builder: (context) => const MilkListScreen(),
     ),
   );
 },

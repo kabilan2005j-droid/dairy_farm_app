@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import '../models/milk_model.dart';
 
 class MilkService {
@@ -6,10 +7,17 @@ class MilkService {
 
   // Add milk record
   Future<void> addMilkRecord(MilkModel milk) async {
-    await _firestore
-        .collection('milk_records')
-        .doc(milk.id)
-        .set(milk.toMap());
+    try {
+      debugPrint('Saving milk record: ${milk.toMap()}');
+      await _firestore
+          .collection('milk_records')
+          .doc(milk.id)
+          .set(milk.toMap());
+      debugPrint('Milk record saved successfully!');
+    } catch (e) {
+      debugPrint('Error saving milk record: $e');
+      rethrow;
+    }
   }
 
   // Get all milk records stream
@@ -49,10 +57,31 @@ class MilkService {
         .snapshots()
         .map((snapshot) => snapshot.docs
             .map((doc) => (doc.data()['totalAmount'] ?? 0).toDouble())
-.fold(0.0, (total, amount) => total + amount));  }
+            .fold(0.0, (total, amount) => total + amount));
+  }
+
+  // Update milk record
+  Future<void> updateMilkRecord(MilkModel milk) async {
+    try {
+      await _firestore
+          .collection('milk_records')
+          .doc(milk.id)
+          .update(milk.toMap());
+      debugPrint('Milk record updated successfully!');
+    } catch (e) {
+      debugPrint('Error updating milk record: $e');
+      rethrow;
+    }
+  }
 
   // Delete milk record
   Future<void> deleteMilkRecord(String id) async {
-    await _firestore.collection('milk_records').doc(id).delete();
+    try {
+      await _firestore.collection('milk_records').doc(id).delete();
+      debugPrint('Milk record deleted successfully!');
+    } catch (e) {
+      debugPrint('Error deleting milk record: $e');
+      rethrow;
+    }
   }
 }
