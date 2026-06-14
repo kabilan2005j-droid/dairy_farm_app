@@ -8,6 +8,7 @@ import '../milk/milk_list_screen.dart';
 import '../sales/sales_list_screen.dart';
 import '../feed/feed_list_screen.dart';
 import '../health/health_list_screen.dart';
+import '../reports/reports_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -175,14 +176,13 @@ class HomeScreen extends ConsumerWidget {
                   title: 'Reports &\nAnalytics',
                   color: Colors.purple,
                   onTap: () {
-                    // Coming soon
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Reports & Analytics — Coming Soon!'),
-                        backgroundColor: Colors.purple,
-                      ),
-                    );
-                  },
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const ReportsScreen(),
+    ),
+  );
+},
                 ),
               ],
             ),
