@@ -5,11 +5,18 @@ import 'firebase_options.dart';
 import 'providers/auth_provider.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/home/home_screen.dart';
+import 'theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const ProviderScope(child: MyApp()));
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {
@@ -22,24 +29,24 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Dairy Farm Manager',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.theme,
       home: authState.when(
         data: (user) {
-          // If user is logged in go to HomeScreen
-          // If not go to LoginScreen
-          if (user != null) {
-            return const HomeScreen();
-          }
+          if (user != null) return const HomeScreen();
           return const LoginScreen();
         },
         loading: () => const Scaffold(
-          body: Center(child: CircularProgressIndicator(color: Colors.green)),
+          body: Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primary,
+            ),
+          ),
         ),
-        error: (error, stack) =>
-            const Scaffold(body: Center(child: Text('Something went wrong!'))),
+        error: (error, stack) => const Scaffold(
+          body: Center(
+            child: Text('Something went wrong!'),
+          ),
+        ),
       ),
     );
   }
